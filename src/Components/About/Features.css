@@ -1,0 +1,44 @@
+@keyframes slideInUp {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.visible {
+  opacity: 1; /* or any other style you want to apply when visible */
+  transition: opacity 0.5s; /* or any other transition property */
+}
+
+.word-animation {
+ 
+  opacity: 0;
+  animation: slideInUp 0.5s ease-in-out forwards;
+  animation-delay: calc(0.5s * var(--animation-index)); /* Adjust the delay as needed */
+}
+
+
+
+
+/* Grid item animation */
+.grid-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.grid-item.grid-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .word-animation {
+    display: block; 
+    margin-right: 0; 
+    margin-bottom: 0.5rem; 
+  }
+}

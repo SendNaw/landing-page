@@ -1,0 +1,8 @@
+.pending {
+    color: var(--color-textPurple);
+  }
+  
+  .active {
+    color: black;
+  }
+  
