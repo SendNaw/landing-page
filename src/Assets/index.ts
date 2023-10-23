@@ -27,3 +27,4 @@ export {default as abstract} from "./abstract_003.png"
 export {default as molecular} from "./molecular_019.png"
 export {default as up_arrow} from "./ep_arrow-up.svg"
 export {default as down_arrow} from "./ep_arrow-down.svg"
+export {default as landing} from './sendnow.png'

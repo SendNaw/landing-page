@@ -1,5 +1,4 @@
-import React from "react";
-import './Home.css'
+import "./Home.css";
 import { img, line_1 } from "../../Assets";
 type Props = {};
 
