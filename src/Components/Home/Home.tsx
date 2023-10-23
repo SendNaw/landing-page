@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Home.css";
-import { heroimage, line, abstract, molecular } from "../../Assets";
+import { heroimage, line, abstract, molecular, landing } from "../../Assets";
 
 import Footer from "../Footer";
 import Nav from "../Nav/Nav";
@@ -93,15 +93,11 @@ const Home = (props: Props) => {
           </div>
 
           <div className="md:col-span-5 relative grid m-auto justify-center content-center items-center">
-            <div className="my-2 z-20">
-              <img src={heroimage} alt="hero image" className="m-auto" />
-            </div>
-            <div className="absolute bottom-32">
-              <img src={abstract} alt="abstract" className="w-16 h-16" />
-            </div>
-            <div className="absolute top-0 right-7">
-              <img src={molecular} alt="molecular" className="w-16 h-16" />
-            </div>
+  <div className="w-full bg-blend-overlay">
+    <img src={landing} alt="hero image" className="w-full" />
+  </div>
+
+           
           </div>
           <div className="my-2">
             <p className="text-textPurple md:hidden px-7  text-base leading-8 font-medium">
