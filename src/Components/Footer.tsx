@@ -11,7 +11,8 @@ const Footer = () => {
   const instagramLink =
     "https://instagram.com/sendnow.co?igshid=OGQ5ZDc2ODk2ZA==";
   const twitterLink = "https://twitter.com/sendnowtech?s=21";
-  const emailLink = "mailto:sendnownigeria@gmail.com";
+  const emailLink = "mailto:hisendnaw@gmail.com";
+  const linkedInLink = "https://www.linkedin.com/company/sendnaw-technologies"
 
   return (
     <footer className="footer flex justify-between max-lg:flex-col max-md:items-start max-lg:gap-20 max-md:px-7 max-xl:items-center pt-20 max-md:pb-12 pb-24">
@@ -34,7 +35,7 @@ const Footer = () => {
             <a href={emailLink} target="_blank" rel="noopener noreferrer">
               <img src={emailIcon} alt="email icon" />
             </a>
-            <a href={""} target="_blank" rel="noopener noreferrer">
+            <a href={linkedInLink} target="_blank" rel="noopener noreferrer">
               <img src={LinkedInIcon} alt="linkedin icon" />
             </a>
             <a href={""} target="_blank" rel="noopener noreferrer">
@@ -72,8 +73,8 @@ const Footer = () => {
           <li className="text-[#110319] flex flex-col gap-2 text-xl font-[700] mb-4">
             Contact
             <ul>
-              <li>Email: hi@sendnaw.com</li>
-              <li>Phone: +23491357885</li>
+              <li><a href={emailLink} target="_blank" rel="noopener noreferrer">Email: hisendnaw@gmail.com</a></li>
+              <li><a href="tel:+2349132827053" target="_blank" rel="noopener noreferrer">Phone: +2349132827053</a></li>
             </ul>
           </li>
         </ul>
