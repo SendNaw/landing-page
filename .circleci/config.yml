@@ -18,6 +18,15 @@ commands:
             sudo apt install -y nodejs
 
 jobs:
+  delete_s3_objects:
+    machine:
+      image: ubuntu-2204:2022.04.2
+    steps:
+      - checkout
+      - run:
+          name: Delete all objects in s3
+          command: |
+            aws s3 rm s3://sendnaw-frontend/ --recursive --include "*"
   deploy_landing-page:
     machine:
       image: ubuntu-2204:2022.04.2
@@ -33,10 +42,10 @@ jobs:
           name: Deploy landing-page to s3
           command: |
             cd dist
-            aws s3 cp . s3://sendnaw-front-end/ --recursive
-            aws s3 cp assets/ s3://sendnaw-front-end/assets/ --recursive
+            aws s3 cp . s3://sendnaw-frontend/ --recursive
 
 workflows:
   sendnaw:
     jobs:
+      - delete_s3_objects
       - deploy_landing-page
