@@ -93,7 +93,7 @@ const Home = (props: Props) => {
           </div>
 
           <div className="md:col-span-5 relative grid m-auto justify-center content-center items-center">
-  <div className="w-full 	">
+  <div className="w-full	">
     <img src={landing} alt="hero image" className="w-full" />
   </div>
 
@@ -140,9 +140,9 @@ const Home = (props: Props) => {
                   smooth={true}
                   offset={-70}
                   duration={500}
-                  className="bg-customPurple my-2 text-white font-medium text-center rounded p-2"
+                  className={"bg-customPurple my-2 text-white font-medium text-center rounded p-2"}
                 >
-                  <button onClick={handleJoinWaitlistClick}>
+                  <button onClick={handleJoinWaitlistClick} className="text-white">
                     Join Waitlist
                   </button>
                 </Link>

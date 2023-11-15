@@ -14,7 +14,7 @@ const Subscribe = forwardRef<HTMLInputElement | null>((props: Props, ref) => {
     e.preventDefault();
     try {
       post(email);
-      setEmail("");
+      // setEmail("");
       setIsSuccessVisible(true);
     } catch (error) {}
   };

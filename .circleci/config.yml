@@ -20,7 +20,7 @@ commands:
 jobs:
   delete_s3_objects:
     machine:
-      image: ubuntu-2204:2022.04.2
+      image: ubuntu-2204:2023.10.1
     steps:
       - checkout
       - run:
@@ -29,7 +29,7 @@ jobs:
             aws s3 rm s3://sendnaw-frontend/ --recursive --include "*"
   deploy_landing-page:
     machine:
-      image: ubuntu-2204:2022.04.2
+      image: ubuntu-2204:2023.10.1
     steps:
       - checkout
       - install_nodejs
@@ -47,5 +47,14 @@ jobs:
 workflows:
   sendnaw:
     jobs:
-      - delete_s3_objects
-      - deploy_landing-page
+      - delete_s3_objects:
+          filters:
+            branches:
+              only:
+                - main
+      - deploy_landing-page:
+          requires: [delete_s3_objects]
+          filters:
+            branches:
+              only:
+                - main
