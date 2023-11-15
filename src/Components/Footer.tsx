@@ -9,19 +9,19 @@ import {
 const Footer = () => {
   //  Social links
   const instagramLink =
-    "https://instagram.com/sendnow.co?igshid=OGQ5ZDc2ODk2ZA==";
-  const twitterLink = "https://twitter.com/sendnowtech?s=21";
-  const emailLink = "mailto:sendnownigeria@gmail.com";
-
+    "https://instagram.com/joinsendnaw?igshid=MW5tb2Y4Mjd3ZnlhbA==";
+  const twitterLink = "https://x.com/joinsendnaw?s=21";
+  const emailLink = "mailto:Support@sendnaw.com";
+  const LinkedinLink = "https://www.linkedin.com/company/sendnaw-technologies/"
   return (
     <footer className="footer flex justify-between max-lg:flex-col max-md:items-start max-lg:gap-20 max-md:px-7 max-xl:items-center pt-20 max-md:pb-12 pb-24">
       <div className="flex flex-col gap-4 max-md:items-start max-lg:items-center relative lg:left-[5%] xl:left-[8%] ">
         <img
           src={sendnaw_logo}
           alt="sendnaw logo"
-          className="w-[50px] block h-[50px]"
+          className="w-20 block h-20"
         />
-        <p className="text-[#918398] mt-4 text-lg font-[400]">
+        <p className="text-[#918398] text-lg font-[400]">
           Make all transactions in seconds
         </p>
 
@@ -34,7 +34,7 @@ const Footer = () => {
             <a href={emailLink} target="_blank" rel="noopener noreferrer">
               <img src={emailIcon} alt="email icon" />
             </a>
-            <a href={""} target="_blank" rel="noopener noreferrer">
+            <a href={LinkedinLink} target="_blank" rel="noopener noreferrer">
               <img src={LinkedInIcon} alt="linkedin icon" />
             </a>
             <a href={""} target="_blank" rel="noopener noreferrer">
@@ -72,8 +72,8 @@ const Footer = () => {
           <li className="text-[#110319] flex flex-col gap-2 text-xl font-[700] mb-4">
             Contact
             <ul>
-              <li>Email: hi@sendnaw.com</li>
-              <li>Phone: +23491357885</li>
+              <li>Email: Support@sendnaw.com</li>
+              <li>Phone: +2349132827053</li>
             </ul>
           </li>
         </ul>
