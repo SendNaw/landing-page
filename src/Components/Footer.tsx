@@ -11,7 +11,7 @@ const Footer = () => {
   const instagramLink =
     "https://instagram.com/joinsendnaw?igshid=MW5tb2Y4Mjd3ZnlhbA==";
   const twitterLink = "https://x.com/joinsendnaw?s=21";
-  const emailLink = "mailto:Support@sendnaw.com";
+  const emailLink = "mailto:support@sendnaw.com";
   const LinkedinLink = "https://www.linkedin.com/company/sendnaw-technologies/"
   return (
     <footer className="footer flex justify-between max-lg:flex-col max-md:items-start max-lg:gap-20 max-md:px-7 max-xl:items-center pt-20 max-md:pb-12 pb-24">
@@ -72,7 +72,7 @@ const Footer = () => {
           <li className="text-[#110319] flex flex-col gap-2 text-xl font-[700] mb-4">
             Contact
             <ul>
-              <li>Email: Support@sendnaw.com</li>
+              <li>Email: support@sendnaw.com</li>
               <li>Phone: +2349132827053</li>
             </ul>
           </li>
