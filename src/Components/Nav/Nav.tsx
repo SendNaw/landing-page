@@ -20,7 +20,7 @@ const Nav = (props: Props) => {
         <nav className="flex md:w-[750px] lg:w-[900px] xl:w-[1200px] px-4 nav h-[70px]  items-center  relative">
           <div className="flex max-md:px-[10px] md:px-[35px] lg:px-[55px] xl:px-[76px] w-full items-center">
             <div className="text-lg font-bold md:py-0 py-4 flex content-center my-auto">
-              <img src={sendnaw_logo} alt="logo" className="h-10 w-10" />
+              <img src={sendnaw_logo} alt="logo" className="h-16 w-16" />
 
             </div>
             <ul

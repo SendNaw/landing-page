@@ -93,8 +93,8 @@ const Home = (props: Props) => {
           </div>
 
           <div className="md:col-span-5 relative grid m-auto justify-center content-center items-center">
-  <div className="w-full mix-blend-overlay bg-blend-overlay	">
-    <img src={landing} alt="hero image" className="max-md:w-[95%] w-full mx-auto" />
+  <div className="w-full	">
+    <img src={landing} alt="hero image" className="w-full" />
   </div>
 
            

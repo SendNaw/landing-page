@@ -1,0 +1,51 @@
+version: 2.1
+orbs:
+  slack: circleci/slack@4.12.1
+
+commands:
+  install_nodejs:
+    description: Install Node.js 18.x
+    steps:
+      - run:
+          name: Install Node.js 18
+          command: |
+            sudo apt update
+            sudo apt install -y ca-certificates curl gnupg
+            sudo mkdir -p /etc/apt/keyrings
+            curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+            echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_18.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+            sudo apt update
+            sudo apt install -y nodejs
+
+jobs:
+  delete_s3_objects:
+    machine:
+      image: ubuntu-2204:2022.04.2
+    steps:
+      - checkout
+      - run:
+          name: Delete all objects in s3
+          command: |
+            aws s3 rm s3://sendnaw-frontend/ --recursive --include "*"
+  deploy_landing-page:
+    machine:
+      image: ubuntu-2204:2022.04.2
+    steps:
+      - checkout
+      - install_nodejs
+      - run:
+          name: Build landing-page
+          command: |
+            npm install
+            npm run build
+      - run:
+          name: Deploy landing-page to s3
+          command: |
+            cd dist
+            aws s3 cp . s3://sendnaw-frontend/ --recursive
+
+workflows:
+  sendnaw:
+    jobs:
+      - delete_s3_objects
+      - deploy_landing-page
