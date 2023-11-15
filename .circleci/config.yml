@@ -51,10 +51,10 @@ workflows:
           filters:
             branches:
               only:
-                - staging
+                - main
       - deploy_landing-page:
           requires: [delete_s3_objects]
           filters:
             branches:
               only:
-                - staging
+                - main
