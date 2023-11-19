@@ -89,6 +89,11 @@ workflows:
             branches:
               only:
                 - main
+      - delete_s3_objects_on_staging_environment:
+          filters:
+            branches:
+              only:
+                - staging
       - deploy_landing-page_on_staging_environment:
           filters:
             branches:
