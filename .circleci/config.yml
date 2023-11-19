@@ -18,7 +18,7 @@ commands:
             sudo apt install -y nodejs
 
 jobs:
-  delete_s3_objects_on_staging_environment:
+  delete_s3_objects_on_staging_environment_for_main:
     machine:
       image: ubuntu-2204:2023.10.1
     steps:
@@ -52,6 +52,15 @@ jobs:
           command: |
             cd dist
             aws s3 cp . s3://sendnaw-frontend/ --recursive
+  delete_s3_objects_on_staging_environment_for_staging:
+    machine:
+      image: ubuntu-2204:2023.10.1
+    steps:
+      - checkout
+      - run:
+          name: Delete all objects in s3 bucket on staging environment
+          command: |
+            aws s3 rm s3://stage.sendnaw.com/ --recursive --include "*"
   deploy_landing-page_on_staging_environment:
     machine:
       image: ubuntu-2204:2023.10.1
@@ -72,7 +81,7 @@ jobs:
 workflows:
   sendnaw:
     jobs:
-      - delete_s3_objects_on_staging_environment:
+      - delete_s3_objects_on_staging_environment_for_main:
           filters:
             branches:
               only:
@@ -89,7 +98,7 @@ workflows:
             branches:
               only:
                 - main
-      - delete_s3_objects_on_staging_environment:
+      - delete_s3_objects_on_staging_environment_for_staging:
           filters:
             branches:
               only:
