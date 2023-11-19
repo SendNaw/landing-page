@@ -87,7 +87,7 @@ workflows:
               only:
                 - main
       - delete_s3_objects_on_development_environment:
-          requires: [delete_s3_objects_on_staging_environment]
+          requires: [delete_s3_objects_on_staging_environment_for_main]
           filters:
             branches:
               only:
@@ -104,6 +104,7 @@ workflows:
               only:
                 - staging
       - deploy_landing-page_on_staging_environment:
+          requires: [delete_s3_objects_on_staging_environment_for_staging]
           filters:
             branches:
               only:
