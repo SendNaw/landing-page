@@ -18,16 +18,25 @@ commands:
             sudo apt install -y nodejs
 
 jobs:
-  delete_s3_objects:
+  delete_s3_objects_on_staging_environment_for_main:
     machine:
       image: ubuntu-2204:2023.10.1
     steps:
       - checkout
       - run:
-          name: Delete all objects in s3
+          name: Delete all objects in s3 bucket on staging environment
+          command: |
+            aws s3 rm s3://stage.sendnaw.com/ --recursive --include "*"
+  delete_s3_objects_on_development_environment:
+    machine:
+      image: ubuntu-2204:2023.10.1
+    steps:
+      - checkout
+      - run:
+          name: Delete all objects in s3 bucket on development environment
           command: |
             aws s3 rm s3://sendnaw-frontend/ --recursive --include "*"
-  deploy_landing-page:
+  deploy_landing-page_on_development_environment:
     machine:
       image: ubuntu-2204:2023.10.1
     steps:
@@ -39,22 +48,64 @@ jobs:
             npm install
             npm run build
       - run:
-          name: Deploy landing-page to s3
+          name: Deploy landing-page to s3 bucket
           command: |
             cd dist
             aws s3 cp . s3://sendnaw-frontend/ --recursive
+  delete_s3_objects_on_staging_environment_for_staging:
+    machine:
+      image: ubuntu-2204:2023.10.1
+    steps:
+      - checkout
+      - run:
+          name: Delete all objects in s3 bucket on staging environment
+          command: |
+            aws s3 rm s3://stage.sendnaw.com/ --recursive --include "*"
+  deploy_landing-page_on_staging_environment:
+    machine:
+      image: ubuntu-2204:2023.10.1
+    steps:
+      - checkout
+      - install_nodejs
+      - run:
+          name: Build landing-page
+          command: |
+            npm install
+            npm run build
+      - run:
+          name: Deploy landing-page to s3 bucket on staging environment
+          command: |
+            cd dist
+            aws s3 cp . s3://stage.sendnaw.com/ --recursive
 
 workflows:
   sendnaw:
     jobs:
-      - delete_s3_objects:
+      - delete_s3_objects_on_staging_environment_for_main:
           filters:
             branches:
               only:
                 - main
-      - deploy_landing-page:
-          requires: [delete_s3_objects]
+      - delete_s3_objects_on_development_environment:
+          requires: [delete_s3_objects_on_staging_environment_for_main]
           filters:
             branches:
               only:
                 - main
+      - deploy_landing-page_on_development_environment:
+          requires: [delete_s3_objects_on_development_environment]
+          filters:
+            branches:
+              only:
+                - main
+      - delete_s3_objects_on_staging_environment_for_staging:
+          filters:
+            branches:
+              only:
+                - staging
+      - deploy_landing-page_on_staging_environment:
+          requires: [delete_s3_objects_on_staging_environment_for_staging]
+          filters:
+            branches:
+              only:
+                - staging
